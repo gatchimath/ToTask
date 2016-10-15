@@ -1,3 +1,3 @@
 # ToTask
 
-A feature-rich task app for Android newly in development.
+A feature-rich task app for Android.  Newly in development.
