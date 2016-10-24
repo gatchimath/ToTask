@@ -1,4 +1,4 @@
-package gatchimath.com.totask;
+package com.gatchimath.totask;
 
 import org.junit.Test;
 

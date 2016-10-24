@@ -1,4 +1,4 @@
-package gatchimath.com.totask;
+package com.gatchimath.totask;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;
