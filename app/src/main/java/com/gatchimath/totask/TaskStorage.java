@@ -30,7 +30,7 @@ class TaskStorage {
 	}
 
 	/**
-	 * For retrieving a specific task using it's unique ID.
+	 * For retrieving a specific task using it's 	unique ID.
 	 * Great for listeners (since they supply a viewId).
 	 *
 	 * @param id  The task's unique integer ID.
@@ -50,5 +50,14 @@ class TaskStorage {
 	List<Task> getTasks() {
 		//@TODO
 		return null;
+	}
+	
+	/**
+	 * Removes a task from this storage.
+	 *
+	 * @param id  Unque ID of the task to remove.
+	 */
+	void removeTask(int id) {
+		//@TODO
 	}
 }
