@@ -1,15 +1,33 @@
 package com.gatchimath.totask;
 
 interface Task {
-	String getName();				// Return the name
+	/**
+	 * @return The name and main content of the task.
+	 */
+	String getName();
 	
-	String getText();				// Return the details, if any
+	/**
+	 * @return Any additional details pertinent to the task.
+	 */
+	String getText();
 	
-	boolean isChecked();			// Return "done" status
+	/**
+	 * @return True if the task is done, false if not.
+	 */
+	boolean isChecked();
 	
-	void setName(String name);		// Set the name (simple description)
+	/**
+	 * @param name  The name and main content of this task.
+	 */
+	void setName(String name);
 	
-	void setText(String text);		// Set details, if any
+	/**
+	 * @param text  Any additional details pertinent to the task.
+	 */
+	void setText(String text);
 	
-	void setChecked(boolean value);	// Set done status
+	/**
+	 * @param value  True if the task has been finished, false if otherwise.
+	 */
+	void setChecked(boolean value);
 }
