@@ -38,7 +38,7 @@ class TaskStorage {
 	 */
 	Task getTask(int id) {
 		//@TODO
-		return 0;
+		return null;
 	}
 	
 	/**
