@@ -13,7 +13,6 @@ class Task {
 	private String text;
 	private int id;
 	private boolean doneState;
-	private static final AtomicInteger nextGeneratedId = new AtomicInteger(1);
 	
 	Task() {
 		this("");
@@ -26,7 +25,7 @@ class Task {
 	Task(String name, String text) {
 		this.name = name;
 		this.text = text;
-		this.id = generateId();
+		this.id = 0;
 		this.doneState = false;
 	}
 	
