@@ -27,7 +27,7 @@ class TaskStorage {
 	 * @param task  The task to pass into this storage.
 	 */
 	void addTask(Task task) {
-		//@TODO
+		taskList.add(task);
 	}
 	
 	/**
@@ -36,7 +36,7 @@ class TaskStorage {
 	 * @param taskList  List of tasks to add.
 	 */
 	void addTasks(List<Task> taskList) {
-		//@TODO
+		this.taskList.addAll(taskList);
 	}
 
 	/**
@@ -58,8 +58,7 @@ class TaskStorage {
 	 * @return  A list of all tasks stored in this task storage.
 	 */
 	List<Task> getTasks() {
-		//@TODO
-		return null;
+		return taskList;
 	}
 	
 	/**
