@@ -45,4 +45,19 @@ class Task {
 	void setChecked(boolean value) {
 		//@todo
 	}
+	
+	/**
+	 * @return  The unique ID of the task.
+	 */
+	int getId() {
+		//@todo
+		return 9999;
+	}
+	
+	/**
+	 * @param  The unique ID of the task.
+	 */
+	void setId(int id) {
+		//@todo
+	}
 }
