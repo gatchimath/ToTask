@@ -1,3 +1,8 @@
+package com.gatchimath.totask;
+
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * When you make a task, you add it to this.
  * When you need an already made task, you get it from this.
@@ -8,8 +13,13 @@
  *
  * @author  gatchi (github.com/gatchi)
  */
-
 class TaskStorage {
+	
+	private ArrayList<Task> taskList;
+	
+	TaskStorage() {
+		taskList = new ArrayList(5);
+	}
 
 	/**
 	 * Adds the task to this storage object.
