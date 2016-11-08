@@ -1,6 +1,12 @@
 package com.gatchimath.totask;
 
 class Task {
+	
+	private String name;
+	private String text;
+	private int id;
+	private boolean checkState;
+	
 	/**
 	 * @return The name and main content of the task.
 	 */
