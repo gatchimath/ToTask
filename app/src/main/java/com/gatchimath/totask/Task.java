@@ -1,5 +1,7 @@
 package com.gatchimath.totask;
 
+import java.util.concurrent.atomic.AtomicInteger;
+
 /**
  * Basic task class.
  *
@@ -11,20 +13,20 @@ class Task {
 	private String text;
 	private int id;
 	private boolean doneState;
+	private static final AtomicInteger nextGeneratedId = new AtomicInteger(1);
+	
+	Task() {
+		this("");
+	}
 	
 	Task(String name) {
-		this.name = name;
-		this.text = "";
-		//@todo: Generate a unique ID here instead of setting to 0.
-		this.id = 0;
-		this.doneState = false;
+		this(name, "");
 	}
 	
 	Task(String name, String text) {
 		this.name = name;
 		this.text = text;
-		//@todo  Generate a unique ID here instead of setting to 0.
-		this.id = 0;
+		this.id = generateId();
 		this.doneState = false;
 	}
 	
@@ -39,38 +41,35 @@ class Task {
 	 * @return The name and main content of the task.
 	 */
 	String getName() {
-		//@todo
-		return null;
+		return name;
 	}
 	
 	/**
 	 * @param name  The name and main content of this task.
 	 */
 	void setName(String name) {
-		//@todo
+		this.name = name;
 	}
 	
 	/**
 	 * @return Any additional details pertinent to the task.
 	 */
 	String getText() {
-		//@todo
-		return null;
+		return text;
 	}
 	
 	/**
 	 * @param text  Any additional details pertinent to the task.
 	 */
 	void setText(String text) {
-		//@todo
+		this.text = text;
 	}
 	
 	/**
 	 * @return True if the task is done, false if not.
 	 */
 	boolean isDone() {
-		//@todo
-		return false;
+		return doneState;
 	}
 	
 	/**
@@ -84,7 +83,7 @@ class Task {
 	 * @param value  True if the task has been finished, false if otherwise
 	 */
 	void setDoneState(boolean value) {
-		//@todo
+		doneState = value;
 	}
 	
 	/**
@@ -98,14 +97,13 @@ class Task {
 	 * @return  The unique ID of the task.
 	 */
 	int getId() {
-		//@todo
-		return 9999;
+		return id;
 	}
 	
 	/**
 	 * @param  The unique ID of the task.
 	 */
 	void setId(int id) {
-		//@todo
+		this.id = id;
 	}
 }
