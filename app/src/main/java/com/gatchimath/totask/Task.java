@@ -10,14 +10,14 @@ class Task {
 	private String name;
 	private String text;
 	private int id;
-	private boolean checkedState;
+	private boolean doneState;
 	
 	Task(String name) {
 		this.name = name;
 		this.text = "";
 		//@todo: Generate a unique ID here instead of setting to 0.
 		this.id = 0;
-		this.checkedState = false;
+		this.doneState = false;
 	}
 	
 	Task(String name, String text) {
@@ -25,14 +25,14 @@ class Task {
 		this.text = text;
 		//@todo  Generate a unique ID here instead of setting to 0.
 		this.id = 0;
-		this.checkedState = false;
+		this.doneState = false;
 	}
 	
 	Task(String name, String text, int id) {
 		this.name = name;
 		this.text = text;
 		this.id = id;
-		this.checkedState = false;
+		this.doneState = false;
 	}
 	
 	/**
@@ -68,16 +68,30 @@ class Task {
 	/**
 	 * @return True if the task is done, false if not.
 	 */
-	boolean isChecked() {
+	boolean isDone() {
 		//@todo
 		return false;
 	}
 	
 	/**
+	 * Mark the task as done.
+	 */
+	void setDone() {
+		doneState = true;
+	}
+	
+	/**
 	 * @param value  True if the task has been finished, false if otherwise
 	 */
-	void setChecked(boolean value) {
+	void setDoneState(boolean value) {
 		//@todo
+	}
+	
+	/**
+	 * Toggles the done state of the task.
+	 */
+	void toggleDoneState() {
+		doneState = !doneState;
 	}
 	
 	/**
