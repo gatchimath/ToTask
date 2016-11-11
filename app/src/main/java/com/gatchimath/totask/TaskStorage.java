@@ -13,12 +13,12 @@ import java.util.List;
  *
  * @author  gatchi (github.com/gatchi)
  */
-class TaskStorage {
+public class TaskStorage {
 	
 	private ArrayList<Task> taskList;
 	
-	TaskStorage() {
-		taskList = new ArrayList(5);
+	public TaskStorage() {
+		taskList = new ArrayList();
 	}
 
 	/**
@@ -26,7 +26,7 @@ class TaskStorage {
 	 *
 	 * @param task  The task to pass into this storage.
 	 */
-	void addTask(Task task) {
+	public void addTask(Task task) {
 		taskList.add(task);
 	}
 	
@@ -35,20 +35,8 @@ class TaskStorage {
 	 *
 	 * @param taskList  List of tasks to add.
 	 */
-	void addTasks(List<Task> taskList) {
+	public void addTasks(List<Task> taskList) {
 		this.taskList.addAll(taskList);
-	}
-
-	/**
-	 * For retrieving a specific task using it's 	unique ID.
-	 * Great for listeners (since they supply a viewId).
-	 *
-	 * @param id  The task's unique integer ID.
-	 * @return    The task requested.
-	 */
-	Task getTask(int id) {
-		//@TODO
-		return null;
 	}
 	
 	/**
@@ -57,16 +45,7 @@ class TaskStorage {
 	 *
 	 * @return  A list of all tasks stored in this task storage.
 	 */
-	List<Task> getTasks() {
+	public ArrayList<Task> getTasks() {
 		return taskList;
-	}
-	
-	/**
-	 * Removes a task from this storage.
-	 *
-	 * @param id  Unque ID of the task to remove.
-	 */
-	void removeTask(int id) {
-		//@TODO
 	}
 }
