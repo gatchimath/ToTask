@@ -28,6 +28,12 @@ public class FileStorage {
 		// @todo
 	}
 	
+	/**
+	 * Easy simple way of storing objects that can be
+	 * converted to strings.  Or for saving strings directly.
+	 *
+	 * @param string  String to write to file.
+	 */
 	public void storeString(String string) {
 		try {
 			FileOutputStream fos = new FileOutputStream(file);
