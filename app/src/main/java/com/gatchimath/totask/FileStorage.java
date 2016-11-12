@@ -6,6 +6,8 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import com.google.gson.Gson;
+import org.json.JSONObject;
 
 /**
  * Interfaces between objects and app (local file) storage.
@@ -15,6 +17,8 @@ import java.io.IOException;
 public class FileStorage {
 	
 	private File file;
+	private final String NAME_FIELD = "name";
+	private final String TEXT_FIELD = "text";
 	
 	/**
 	 * @param context  Application context of the caller.
@@ -24,8 +28,21 @@ public class FileStorage {
 		file = new File(context.getFilesDir(), filename);
 	}
 	
+	/**
+	 * Convert task to JSON/gson, then to string for easy
+	 * writing.
+	 *
+	 * @param task  Task to write to file.
+	 */
 	public void storeTask(Task task) {
 		// @todo
+	}
+	
+	/**
+	 * @param json  JSONObject to write to file.
+	 */
+	public void storeJSONObject(JSONObject json) {
+		storeString(json.toString());
 	}
 	
 	/**

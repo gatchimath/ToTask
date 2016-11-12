@@ -5,9 +5,11 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import org.json.JSONException;
 
 public class TaskActivity extends AppCompatActivity {
 
@@ -26,6 +28,15 @@ public class TaskActivity extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
+		
+		Task task = new Task("test task", "this is a test task");
+		FileStorage storage = new FileStorage(this, "test_file");
+		try {
+			storage.storeJSONObject(task.getJSONObject());
+		}
+		catch (JSONException e) {
+			Log.e(Util.TAG, "failed to get json");
+		}
     }
 
     @Override

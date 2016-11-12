@@ -1,5 +1,8 @@
 package com.gatchimath.totask;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 /**
  * Basic task class.
  *
@@ -75,5 +78,17 @@ public class Task {
 	 */
 	public void toggleDoneState() {
 		doneState = !doneState;
+	}
+	
+	/**
+	 * Produces a JSONObject representation of the task.
+	 *
+	 * @return json  JSON object representation of the task.
+	 */
+	public JSONObject getJSONObject() throws JSONException {
+		JSONObject json = new JSONObject();
+		json.put("name", name);
+		json.put("details", text);
+		return json;
 	}
 }
