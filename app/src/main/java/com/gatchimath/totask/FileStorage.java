@@ -55,19 +55,23 @@ public class FileStorage {
 		try {
 			FileOutputStream fos = new FileOutputStream(file);
 			fos.write(string.getBytes());
+			try {
+				fos.close();
+			}
+			catch (IOException e) {
+				Log.wtf(Util.TAG, "Failure in FileStorage.close():");
+				Log.wtf(Util.TAG, "Not sure what happened. Did file disappear?");
+				Log.wtf(Util.TAG, "Message: " + e.getMessage());
+			}
 		}
 		catch (FileNotFoundException e) {
 			Log.e(Util.TAG, "Failure in FileStorage.storeString():");
 			Log.e(Util.TAG, "FileNotFound. Check filename?");
-			Log.e(Util.TAG, e.getMessage());
+			Log.e(Util.TAG, "Message: " + e.getMessage());
 		}
 		catch (IOException e) {
 			Log.wtf(Util.TAG, "Failure in FileStorage.storeString():");
-			Log.e(Util.TAG, e.getMessage());
+			Log.e(Util.TAG, "Message: " + e.getMessage());
 		}
-	}
-	
-	public void close() {
-		// @todo
 	}
 }
