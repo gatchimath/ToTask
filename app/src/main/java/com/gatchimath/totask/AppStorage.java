@@ -37,7 +37,7 @@ public class AppStorage {
 	 */
 	public List<Task> getTaskList() throws JsonSyntaxException {
 		Gson gson = new Gson();
-		String jsonString = getString();
+		String jsonString = fileToString();
 		Type collectionType = new TypeToken<List<Task>>(){}.getType();
 		List<Task> taskList = gson.fromJson(jsonString, collectionType);
 		return taskList;
@@ -47,9 +47,9 @@ public class AppStorage {
 	 * Creates a string representation of the file.
 	 * Only works if the contents of the file are characters.
 	 *
-	 * @return          A string representation of the file.
+	 * @return  A string representation of the file.
 	 */
-	public String getString() {
+	private String fileToString() {
 		String fileString;
 		try {
 			InputStream in = new FileInputStream(file);
