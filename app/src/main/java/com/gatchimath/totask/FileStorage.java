@@ -3,11 +3,17 @@ package com.gatchimath.totask;
 import android.content.Context;
 import android.util.Log;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.InputStream;
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
+import java.lang.reflect.Type;
 import java.util.List;
 import com.google.gson.Gson;
+import com.google.gson.JsonSyntaxException;
+import com.google.gson.reflect.TypeToken;
 
 /**
  * Interfaces between objects and app (local file) storage.
@@ -24,7 +30,46 @@ public class FileStorage {
 	 */
 	public FileStorage(Context context, String filename) {
 		file = new File(context.getFilesDir(), filename);
-	}	
+	}
+	
+	/**
+	 * @return  A list of all the tasks kept in app storage.
+	 */
+	public List<Task> getTaskList() throws JsonSyntaxException {
+		Gson gson = new Gson();
+		String jsonString = getString("UTF-8");
+		Type collectionType = new TypeToken<List<Task>>(){}.getType();
+		List<Task> taskList = gson.fromJson(jsonString, collectionType);
+		return taskList;
+	}
+	
+	/**
+	 * Creates a string representation of the file.
+	 * Only works if the contents of the file are characters.
+	 *
+	 * @param encoding  The character encoding of the file (probably UTF-8)
+	 * @return          A string representation of the file.
+	 */
+	public String getString(String encoding) {
+		String fileString;
+		try {
+			InputStream in = new FileInputStream(file);
+			fileString = Util.inputStreamToString(in, encoding);
+			return fileString;
+		}
+		catch (FileNotFoundException e) {
+			Log.e(Util.TAG, "Failure in FileStorage.getJSONObject():");
+			Log.e(Util.TAG, "File not found.");
+			Log.e(Util.TAG, "Message: " + e.getMessage());
+			return null;
+		}
+		catch (UnsupportedEncodingException e) {
+			Log.e(Util.TAG, "Failure in FileStorage.getJSONObject():");
+			Log.e(Util.TAG, "Target is probably not text.");
+			Log.e(Util.TAG, "Message: " + e.getMessage());
+			return null;
+		}
+	}
 	
 	/**
 	 * Convert object to JSON/gson, then to string for easy
