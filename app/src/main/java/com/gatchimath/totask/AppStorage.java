@@ -16,7 +16,7 @@ import com.google.gson.JsonSyntaxException;
 import com.google.gson.reflect.TypeToken;
 
 /**
- * Interfaces between objects and app (local file) storage.
+ * Interfaces between tasks and app (local file) storage.
  *
  * @author  gatchi (github.com/gatchi)
  */
@@ -76,7 +76,7 @@ public class AppStorage {
 	 *
 	 * @param obj  Object to write to file.
 	 */
-	public void storeObject(Object obj) {
+	private void storeObject(Object obj) {
 		Gson gson = new Gson();
 		String jsonString = gson.toJson(obj);
 		storeString(jsonString);
