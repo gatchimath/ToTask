@@ -20,7 +20,7 @@ import com.google.gson.reflect.TypeToken;
  *
  * @author  gatchi (github.com/gatchi)
  */
-public class FileStorage {
+public class AppStorage {
 	
 	private File file;
 	
@@ -28,7 +28,7 @@ public class FileStorage {
 	 * @param context  Application context of the caller.
 	 * @param filename Name of the file.
 	 */
-	public FileStorage(Context context, String filename) {
+	public AppStorage(Context context, String filename) {
 		file = new File(context.getFilesDir(), filename);
 	}
 	
