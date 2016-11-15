@@ -15,7 +15,7 @@ public class Util {
 	/** Tag used for debugging. */
 	public static final String TAG = "ToTask";
 	
-	static String inputStreamToString(InputStream in, String encoding) throws UnsupportedEncodingException {
+	static String inputStreamToString(InputStream in) throws UnsupportedEncodingException {
 		/**
 		 * This method was made to easily create JSON objects from files using the
 		 * JSON library included in the Android API, which unfortunately cannot create
@@ -24,15 +24,13 @@ public class Util {
 		 *
 		 * Only use this method for streams of characters.
 		 * 
-		 * @param in        Stream of characters to be converted to a String.
-		 * @param encoding  Encoding of the string.  Probably UTF-8.
-		 *
-		 * @return          A string, unless the input is bad. Then it returns an error.
+		 * @param in  Stream of characters to be converted to a String.
+		 * @return    A string, unless the input is bad. Then it returns an error.
 		 */
 		
 		try {
 			// Convert input stream to a string
-			BufferedReader streamReader = new BufferedReader(new InputStreamReader(in, encoding));
+			BufferedReader streamReader = new BufferedReader(new InputStreamReader(in));
 			StringBuilder responseStrBuilder = new StringBuilder();
 			String inputStr;
 			

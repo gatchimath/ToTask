@@ -37,7 +37,7 @@ public class AppStorage {
 	 */
 	public List<Task> getTaskList() throws JsonSyntaxException {
 		Gson gson = new Gson();
-		String jsonString = getString("UTF-8");
+		String jsonString = getString();
 		Type collectionType = new TypeToken<List<Task>>(){}.getType();
 		List<Task> taskList = gson.fromJson(jsonString, collectionType);
 		return taskList;
@@ -47,14 +47,13 @@ public class AppStorage {
 	 * Creates a string representation of the file.
 	 * Only works if the contents of the file are characters.
 	 *
-	 * @param encoding  The character encoding of the file (probably UTF-8)
 	 * @return          A string representation of the file.
 	 */
-	public String getString(String encoding) {
+	public String getString() {
 		String fileString;
 		try {
 			InputStream in = new FileInputStream(file);
-			fileString = Util.inputStreamToString(in, encoding);
+			fileString = Util.inputStreamToString(in);
 			return fileString;
 		}
 		catch (FileNotFoundException e) {
