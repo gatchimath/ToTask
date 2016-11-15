@@ -6,6 +6,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.List;
 import com.google.gson.Gson;
 
 /**
@@ -26,15 +27,24 @@ public class FileStorage {
 	}	
 	
 	/**
-	 * Convert task to JSON/gson, then to string for easy
+	 * Convert object to JSON/gson, then to string for easy
 	 * writing.
 	 *
-	 * @param task  Task to write to file.
+	 * @param obj  Object to write to file.
 	 */
-	public void storeTask(Task task) {
+	public void storeObject(Object obj) {
 		Gson gson = new Gson();
-		String jsonString = gson.toJson(task);
+		String jsonString = gson.toJson(obj);
 		storeString(jsonString);
+	}
+	
+	/**
+	 * Store list of tasks to file storage.
+	 *
+	 * @param taskList  List of tasks to store.
+	 */
+	public void storeTaskList(List<Task> taskList) {
+		storeObject(taskList);
 	}
 	
 	/**
