@@ -48,4 +48,8 @@ public class TaskStorage {
 	public ArrayList<Task> getTasks() {
 		return taskList;
 	}
+	
+	public boolean removeTask(Task task) {
+		return taskList.remove(task);
+	}
 }
