@@ -1,31 +1,51 @@
 package com.gatchimath.totask;
 
+import android.databinding.BaseObservable;
+import android.databinding.Bindable;
+
 /**
  * Basic task class.
  *
  * @author  gatchi (github.com/gatchi)
  */
-public class Task {
+public class Task extends BaseObservable {
 
 	private String name;
-	private String text;
+	private String details;
 	private boolean doneState;
 	
 	/**
 	 * @param name  The name and main content of this task.
-	 * @param text  Any additional details pertinent to the task.
+	 * @param details  Any additional details pertinent to the task.
 	 */
-	public Task(String name, String text) {
+	public Task(String name, String details) {
 		this.name = name;
-		this.text = text;
+		this.details = details;
 		this.doneState = false;
 	}
 	
 	/**
 	 * @return The name and main content of the task.
 	 */
+	@Bindable
 	public String getName() {
 		return name;
+	}
+	
+	/**
+	 * @return Any additional details pertinent to the task.
+	 */
+	@Bindable
+	public String getDetails() {
+		return details;
+	}
+	
+	/**
+	 * @return True if the task is done, false if not.
+	 */
+	@Bindable
+	public boolean getDoneState() {
+		return doneState;
 	}
 	
 	/**
@@ -33,27 +53,15 @@ public class Task {
 	 */
 	public void setName(String name) {
 		this.name = name;
-	}
+		notifyPropertyChanged(BR.name);
+	}	
 	
 	/**
-	 * @return Any additional details pertinent to the task.
+	 * @param details  Any additional details pertinent to the task.
 	 */
-	public String getText() {
-		return text;
-	}
-	
-	/**
-	 * @param text  Any additional details pertinent to the task.
-	 */
-	public void setText(String text) {
-		this.text = text;
-	}
-	
-	/**
-	 * @return True if the task is done, false if not.
-	 */
-	public boolean isDone() {
-		return doneState;
+	public void setText(String details) {
+		this.details = details;
+		notifyPropertyChanged(BR.details);
 	}
 	
 	/**
@@ -61,6 +69,7 @@ public class Task {
 	 */
 	public void setDone() {
 		setDoneState(true);
+		notifyPropertyChanged(BR.doneState);
 	}
 	
 	/**
@@ -68,6 +77,7 @@ public class Task {
 	 */
 	public void setDoneState(boolean value) {
 		doneState = value;
+		notifyPropertyChanged(BR.doneState);
 	}
 	
 	/**
@@ -75,5 +85,6 @@ public class Task {
 	 */
 	public void toggleDoneState() {
 		doneState = !doneState;
+		notifyPropertyChanged(BR.doneState);
 	}
 }
