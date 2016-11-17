@@ -4,12 +4,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * When you make a task, you add it to this.
- * When you need an already made task, you get it from this.
+ * This class represents task-related storage in the app.
+ * It's purpose is to broker between other classes and
+ * storage classes, like app storage or cloud storage.
+ * The rest of the app does not see and should not care
+ * where data goes and comes from, it should only see and
+ * care about TaskStorage.  Likewise, only TaskStorage gets to
+ * care where things go and come from.
  *
- * When tasks are added or removed from this storage object,
- * it does not guarantee synchronousness with other storage
- * sources.  It's just an object.
+ * However, because Tasks [will soon be] Observables, TaskStorages should
+ * get very little interaction outside of its world.  It's mainly
+ * for adding and removing tasks from storage.
  *
  * @author  gatchi (github.com/gatchi)
  */
