@@ -33,6 +33,7 @@ public class TaskStorage {
 	 */
 	public void addTask(Task task) {
 		taskList.add(task);
+		syncStorage();
 	}
 	
 	/**
@@ -42,6 +43,7 @@ public class TaskStorage {
 	 */
 	public void addTasks(List<Task> taskList) {
 		this.taskList.addAll(taskList);
+		syncStorage();
 	}
 	
 	/**
@@ -61,6 +63,19 @@ public class TaskStorage {
 	 * @return  True if remove is successful.
 	 */
 	public boolean removeTask(Task task) {
-		return taskList.remove(task);
+		boolean success = taskList.remove(task);
+		syncStorage();
+		return success;
+	}
+	
+	/**
+	 * Called after every change to storage.  Syncs additions and
+	 * deletions with all other storages this storage has access to.
+	 *
+	 * @return  False, if syncing to any storage has failed.
+	 */
+	private boolean syncStorage() {
+		//@todo
+		return true;
 	}
 }
