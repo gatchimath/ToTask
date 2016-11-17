@@ -49,6 +49,12 @@ public class TaskStorage {
 		return taskList;
 	}
 	
+	/**
+	 * Removed the task from storage.
+	 * Returns a true if succesfull.
+	 *
+	 * @return  True if remove is successful.
+	 */
 	public boolean removeTask(Task task) {
 		return taskList.remove(task);
 	}
