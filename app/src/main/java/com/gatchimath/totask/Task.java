@@ -44,7 +44,7 @@ public class Task extends BaseObservable {
 	 * @return True if the task is done, false if not.
 	 */
 	@Bindable
-	public boolean getDoneState() {
+	public boolean isDone() {
 		return doneState;
 	}
 	
@@ -69,7 +69,7 @@ public class Task extends BaseObservable {
 	 */
 	public void setDone() {
 		setDoneState(true);
-		notifyPropertyChanged(BR.doneState);
+		notifyPropertyChanged(BR.done);
 	}
 	
 	/**
@@ -77,7 +77,7 @@ public class Task extends BaseObservable {
 	 */
 	public void setDoneState(boolean value) {
 		doneState = value;
-		notifyPropertyChanged(BR.doneState);
+		notifyPropertyChanged(BR.done);
 	}
 	
 	/**
@@ -85,6 +85,6 @@ public class Task extends BaseObservable {
 	 */
 	public void toggleDoneState() {
 		doneState = !doneState;
-		notifyPropertyChanged(BR.doneState);
+		notifyPropertyChanged(BR.done);
 	}
 }
