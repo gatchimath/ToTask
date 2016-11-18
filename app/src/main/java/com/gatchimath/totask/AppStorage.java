@@ -33,17 +33,6 @@ public class AppStorage {
 	}
 	
 	/**
-	 * @return  A list of all the tasks kept in app storage.
-	 */
-	public List<Task> getTaskList() throws JsonSyntaxException {
-		Gson gson = new Gson();
-		String jsonString = fileToString();
-		Type collectionType = new TypeToken<List<Task>>(){}.getType();
-		List<Task> taskList = gson.fromJson(jsonString, collectionType);
-		return taskList;
-	}
-	
-	/**
 	 * Creates a string representation of the file.
 	 * Only works if the contents of the file are characters.
 	 *
@@ -82,14 +71,6 @@ public class AppStorage {
 		storeString(jsonString);
 	}
 	
-	/**
-	 * Store list of tasks to file storage.
-	 *
-	 * @param taskList  List of tasks to store.
-	 */
-	public void storeTaskList(List<Task> taskList) {
-		storeObject(taskList);
-	}
 	
 	/**
 	 * Easy simple way of storing objects that can be
