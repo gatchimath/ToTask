@@ -12,9 +12,13 @@ import java.util.List;
  * care about TaskStorage.  Likewise, only TaskStorage gets to
  * care where things go and come from.
  *
- * However, because Tasks [will soon be] Observables, TaskStorages should
+ * However, because Tasks are Observables, TaskStorage should
  * get very little interaction outside of its world.  It's mainly
  * for adding and removing tasks from storage.
+ *
+ * Since TaskStorage represents all task related storage, there
+ * should never be more than one instance of it at a time.
+ * Multiple instances can cause silent sync issues.
  *
  * @author  gatchi (github.com/gatchi)
  */
@@ -27,55 +31,40 @@ public class TaskStorage {
 	}
 
 	/**
-	 * Adds the task to this storage object.
+	 * Adds the task to this store.
 	 *
-	 * @param task  The task to pass into this storage.
+	 * @param task  The task to pass into storage.
 	 */
 	public void addTask(Task task) {
 		taskList.add(task);
-		syncStorage();
 	}
 	
 	/**
-	 * Adds a set of tasks to this storage object.
+	 * Adds a list of tasks to this store.
 	 *
 	 * @param taskList  List of tasks to add.
 	 */
 	public void addTasks(List<Task> taskList) {
 		this.taskList.addAll(taskList);
-		syncStorage();
 	}
 	
 	/**
-	 * Returns all the tasks currently stored in the TaskStorage object.
-	 * Does not guarantee synchronousness between all storage locations.
+	 * Returns all the tasks currently stored in this store.
 	 *
-	 * @return  A list of all tasks stored in this task storage.
+	 * @return  A list of all tasks in this store.
 	 */
 	public ArrayList<Task> getTasks() {
 		return taskList;
 	}
 	
 	/**
-	 * Removed the task from storage.
-	 * Returns a true if succesfull.
+	 * Removes the task from this store.
+	 * Returns a false if task isn't in here.
 	 *
-	 * @return  True if remove is successful.
+	 * @return  False if task isn't in this store.
 	 */
 	public boolean removeTask(Task task) {
 		boolean success = taskList.remove(task);
-		syncStorage();
 		return success;
-	}
-	
-	/**
-	 * Called after every change to storage.  Syncs additions and
-	 * deletions with all other storages this storage has access to.
-	 *
-	 * @return  False, if syncing to any storage has failed.
-	 */
-	private boolean syncStorage() {
-		//@todo
-		return true;
 	}
 }
