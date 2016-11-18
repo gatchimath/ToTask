@@ -59,7 +59,7 @@ public class Task extends BaseObservable {
 	/**
 	 * @param details  Any additional details pertinent to the task.
 	 */
-	public void setText(String details) {
+	public void setDetails(String details) {
 		this.details = details;
 		notifyPropertyChanged(BR.details);
 	}
