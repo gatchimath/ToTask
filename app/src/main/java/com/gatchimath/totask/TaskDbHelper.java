@@ -4,8 +4,11 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+/**
+ * Helper class for dealing with the task table.
+ * Should only be used by {@link com.gatchimath.totask.SqlStorage}.
+ */
 public class TaskDbHelper extends SQLiteOpenHelper {
-	
 	private static final String TEXT_TYPE = " TEXT";
 	private static final String BOOL_TYPE = " INTEGER";
 	private static final String COMMA_SEP = ",";
@@ -17,7 +20,7 @@ public class TaskDbHelper extends SQLiteOpenHelper {
 		TaskTableEntry.COLUMN_NAME_2 + TEXT_TYPE + COMMA_SEP +
 		TaskTableEntry.COLUMN_NAME_3 + BOOL_TYPE + " )";
 		
-	public static final int DATABASE_VERSION = 2;
+	public static final int DATABASE_VERSION = 1;
 	public static final String DATABASE_NAME = "ToTask.db";
 	
 	public TaskDbHelper(Context context) {
@@ -30,7 +33,5 @@ public class TaskDbHelper extends SQLiteOpenHelper {
 	}
 	
 	@Override
-	public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-		//@todo
-	}
+	public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {}
 }
