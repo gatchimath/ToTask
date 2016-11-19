@@ -13,6 +13,7 @@ import java.util.ArrayList;
  * This class should only be instantiated in a
  * {@link com.gatchimath.totask.TaskStorage}.
  *
+ * @see com.gatchimath.totask.TaskTableEntry,
  *      com.gatchimath.totask.TaskDbHelper
  */
 public class SqlStorage {
