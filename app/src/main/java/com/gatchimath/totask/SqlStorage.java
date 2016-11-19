@@ -8,9 +8,12 @@ import java.util.ArrayList;
 
 /**
  * Represents all task-related SQL storage.
+ * <p>
+ * Most of the methods here are basically just SQLite commands.
+ * This class should only be instantiated in a
+ * {@link com.gatchimath.totask.TaskStorage}.
  *
- * Most of the methods here are for issuing SQLite commands.
- * This should only be instantiated in a TaskStorage.
+ *      com.gatchimath.totask.TaskDbHelper
  */
 public class SqlStorage {
 	
@@ -23,8 +26,8 @@ public class SqlStorage {
 	/**
 	 * Writes the task to the task table.
 	 * More info relating to the task table can be found in the
-	 * {@link com.gatchimath.TaskTableEntry} and
-	 * {@link com.gatchimath.TaskDbHelper} classes.
+	 * {@link com.gatchimath.totask.TaskTableEntry} and
+	 * {@link com.gatchimath.totask.TaskDbHelper} classes.
 	 *
 	 * @param task  Task to write to the table.
 	 */
