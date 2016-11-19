@@ -23,7 +23,8 @@ public class SqlStorage {
 	/**
 	 * Writes the task to the task table.
 	 * More info relating to the task table can be found in the
-	 * TaskTableEntry and TaskDbHelper classes.
+	 * {@link com.gatchimath.TaskTableEntry} and
+	 * {@link com.gatchimath.TaskDbHelper} classes.
 	 *
 	 * @param task  Task to write to the table.
 	 */
@@ -39,7 +40,6 @@ public class SqlStorage {
 	
 	/**
 	 * Returns a list of all the tasks in the table.
-	 *
 	 * @return  ArrayList of Tasks in the table.
 	 */
 	public ArrayList<Task> retrieveAllTasks() {
