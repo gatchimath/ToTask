@@ -86,4 +86,3 @@ public class SqlStorage {
 		db.delete(TaskTableEntry.TABLE_NAME, null, null);
 	}
 }
-	
