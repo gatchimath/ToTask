@@ -37,7 +37,7 @@ public class SqlStorage {
 		ContentValues values = new ContentValues();
 		
 		values.put(TaskTableEntry.COLUMN_NAME_1, task.getName());
-		values.put(TaskTableEntry.COLUMN_NAME_2, task.getText());
+		values.put(TaskTableEntry.COLUMN_NAME_2, task.getDetails());
 		values.put(TaskTableEntry.COLUMN_NAME_3, task.isDone() ? 1 : 0);
 		db.insert(TaskTableEntry.TABLE_NAME, null, values);
 	}
