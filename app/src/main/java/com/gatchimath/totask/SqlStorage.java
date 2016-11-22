@@ -63,7 +63,7 @@ public class SqlStorage {
 			task.setName(cursor.getString(
 				cursor.getColumnIndexOrThrow(TaskTableEntry.COLUMN_NAME_1))
 				);	
-			task.setText(cursor.getString(
+			task.setDetails(cursor.getString(
 				cursor.getColumnIndexOrThrow(TaskTableEntry.COLUMN_NAME_2))
 				);
 			int taskDoneState = cursor.getInt(
