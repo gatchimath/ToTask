@@ -1,7 +1,5 @@
 package com.gatchimath.totask;
 
-import android.content.Context;
-import android.database.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -27,11 +25,9 @@ import java.util.List;
 public class TaskStorage {
 	
 	private ArrayList<Task> taskList;
-	private SqlStorage sqlStorage;
 	
-	public TaskStorage(Context context) {
+	public TaskStorage() {
 		taskList = new ArrayList();
-		sqlStorage = new SqlStorage(context);
 	}
 
 	/**
@@ -39,9 +35,8 @@ public class TaskStorage {
 	 *
 	 * @param task  The task to pass into storage.
 	 */
-	public void addTask(Task task) throws SQLException {
+	public void addTask(Task task) {
 		taskList.add(task);
-		sqlStorage.writeTask(task);
 	}
 	
 	/**

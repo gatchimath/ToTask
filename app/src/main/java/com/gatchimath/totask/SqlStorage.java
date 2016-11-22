@@ -3,7 +3,6 @@ package com.gatchimath.totask;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
-import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import java.util.ArrayList;
 
@@ -33,14 +32,14 @@ public class SqlStorage {
 	 *
 	 * @param task  Task to write to the table.
 	 */
-	public void writeTask(Task task) throws SQLException {
+	public void writeTask(Task task) {
 		SQLiteDatabase db = dbHelper.getWritableDatabase();
 		ContentValues values = new ContentValues();
 		
 		values.put(TaskTableEntry.COLUMN_NAME_1, task.getName());
 		values.put(TaskTableEntry.COLUMN_NAME_2, task.getDetails());
 		values.put(TaskTableEntry.COLUMN_NAME_3, task.isDone() ? 1 : 0);
-		db.insertOrThrow(TaskTableEntry.TABLE_NAME, null, values);
+		db.insert(TaskTableEntry.TABLE_NAME, null, values);
 	}
 	
 	/**
