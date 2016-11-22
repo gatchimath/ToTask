@@ -16,9 +16,9 @@ public class TaskDbHelper extends SQLiteOpenHelper {
 	private static final String SQL_CREATE_ENTRIES =
 		"CREATE TABLE " + TaskTableEntry.TABLE_NAME + " (" +
 		TaskTableEntry._ID + " INTEGER PRIMARY KEY," +
-		TaskTableEntry.COLUMN_NAME_1 + TEXT_TYPE + COMMA_SEP +
-		TaskTableEntry.COLUMN_NAME_2 + TEXT_TYPE + COMMA_SEP +
-		TaskTableEntry.COLUMN_NAME_3 + BOOL_TYPE + " )";
+		TaskTableEntry.COLUMN_NAME_NAME + TEXT_TYPE + COMMA_SEP +
+		TaskTableEntry.COLUMN_NAME_DET + TEXT_TYPE + COMMA_SEP +
+		TaskTableEntry.COLUMN_NAME_DONE + BOOL_TYPE + " )";
 		
 	public static final int DATABASE_VERSION = 1;
 	public static final String DATABASE_NAME = "ToTask.db";

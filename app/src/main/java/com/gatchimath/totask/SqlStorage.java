@@ -4,6 +4,7 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import java.lang.IllegalArgumentException;
 import java.util.ArrayList;
 
 /**
@@ -36,9 +37,9 @@ public class SqlStorage {
 		SQLiteDatabase db = dbHelper.getWritableDatabase();
 		ContentValues values = new ContentValues();
 		
-		values.put(TaskTableEntry.COLUMN_NAME_1, task.getName());
-		values.put(TaskTableEntry.COLUMN_NAME_2, task.getDetails());
-		values.put(TaskTableEntry.COLUMN_NAME_3, task.isDone() ? 1 : 0);
+		values.put(TaskTableEntry.COLUMN_NAME_NAME, task.getName());
+		values.put(TaskTableEntry.COLUMN_NAME_DET, task.getDetails());
+		values.put(TaskTableEntry.COLUMN_NAME_DONE, task.isDone() ? 1 : 0);
 		db.insert(TaskTableEntry.TABLE_NAME, null, values);
 	}
 	
@@ -46,7 +47,7 @@ public class SqlStorage {
 	 * Returns a list of all the tasks in the table.
 	 * @return  ArrayList of Tasks in the table.
 	 */
-	public ArrayList<Task> retrieveAllTasks() {
+	public ArrayList<Task> retrieveAllTasks() throws IllegalArgumentException {
 		SQLiteDatabase db = dbHelper.getReadableDatabase();
 		Cursor cursor = db.query(
 			TaskTableEntry.TABLE_NAME,
@@ -57,20 +58,19 @@ public class SqlStorage {
 		cursor.moveToFirst();
 		ArrayList<Task> taskList = new ArrayList<Task>(cursor.getCount());
 		Task task;
+		
+		int nameColumnIndex = cursor.getColumnIndexOrThrow(TaskTableEntry.COLUMN_NAME_NAME);
+		int detailsColumnIndex = cursor.getColumnIndexOrThrow(TaskTableEntry.COLUMN_NAME_DET);
+		int doneColumnIndex = cursor.getColumnIndexOrThrow(TaskTableEntry.COLUMN_NAME_DONE);
+		
 		while (!cursor.isAfterLast()) {
 			task = new Task("", "");
 			
-			task.setName(cursor.getString(
-				cursor.getColumnIndexOrThrow(TaskTableEntry.COLUMN_NAME_1))
-				);	
-			task.setDetails(cursor.getString(
-				cursor.getColumnIndexOrThrow(TaskTableEntry.COLUMN_NAME_2))
-				);
-			int taskDoneState = cursor.getInt(
-				cursor.getColumnIndexOrThrow(TaskTableEntry.COLUMN_NAME_3)
-				);	
-			if (taskDoneState == 1) task.setDoneState(true);
-			else task.setDoneState(false);
+			task.setName(cursor.getString(nameColumnIndex));	
+			task.setDetails(cursor.getString(detailsColumnIndex));
+			int taskDoneState = cursor.getInt(doneColumnIndex);
+			if (taskDoneState != 0) task.setDoneState(false);
+			else task.setDoneState(true);
 			
 			taskList.add(task);
 			cursor.moveToNext();
