@@ -19,10 +19,10 @@ import java.util.ArrayList;
  */
 public class SqlStorage {
 	
-	private TaskDbHelper dbHelper;
+	private SQLiteDatabase db;
 	
-	public SqlStorage(Context context) {
-		dbHelper = new TaskDbHelper(context);
+	public SqlStorage(Context context, SQLiteDatabase db) {
+		this.db = db;
 	}
 	
 	/**
@@ -34,7 +34,6 @@ public class SqlStorage {
 	 * @param task  Task to write to the table.
 	 */
 	public void writeTask(Task task) {
-		SQLiteDatabase db = dbHelper.getWritableDatabase();
 		ContentValues values = new ContentValues();
 		
 		values.put(TaskTableEntry.COLUMN_NAME_NAME, task.getName());
@@ -48,7 +47,6 @@ public class SqlStorage {
 	 * @return  ArrayList of Tasks in the table.
 	 */
 	public ArrayList<Task> retrieveAllTasks() throws IllegalArgumentException {
-		SQLiteDatabase db = dbHelper.getReadableDatabase();
 		Cursor cursor = db.query(
 			TaskTableEntry.TABLE_NAME,
 			null, null,	null, null,	null, null
@@ -82,7 +80,6 @@ public class SqlStorage {
 	 * Deletes all the rows in the table.
 	 */
 	public void clearTable() {
-		SQLiteDatabase db = dbHelper.getWritableDatabase();
 		db.delete(TaskTableEntry.TABLE_NAME, null, null);
 	}
 }
