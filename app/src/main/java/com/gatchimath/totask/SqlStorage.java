@@ -67,8 +67,8 @@ public class SqlStorage {
 			task.setName(cursor.getString(nameColumnIndex));	
 			task.setDetails(cursor.getString(detailsColumnIndex));
 			int taskDoneState = cursor.getInt(doneColumnIndex);
-			if (taskDoneState != 0) task.setDoneState(false);
-			else task.setDoneState(true);
+			if (taskDoneState != 0) task.setDoneState(true);
+			else task.setDoneState(false);
 			
 			taskList.add(task);
 			cursor.moveToNext();
