@@ -4,6 +4,7 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.util.Log;
 import java.lang.IllegalArgumentException;
 import java.util.ArrayList;
 
@@ -42,6 +43,18 @@ public class SqlStorage {
 		db.insert(TaskTableEntry.TABLE_NAME, null, values);
 	}
 	
+	public void deleteTask(Task task) {
+		String checkedStatus;
+		if (task.isDone()) checkedStatus = "1";
+		else checkedStatus = "0";
+		
+		String where = TaskTableEntry.COLUMN_NAME_NAME + " IS '" + task.getName()
+			+ "' AND " + TaskTableEntry.COLUMN_NAME_DET + " = '" + task.getDetails()
+			+ "' AND " + TaskTableEntry.COLUMN_NAME_DONE + " = '" + checkedStatus + "'";
+		int result = db.delete(TaskTableEntry.TABLE_NAME, where, null);
+		Log.i(Util.TAG, "Delete task result: " + Integer.toString(result));
+	}
+	
 	/**
 	 * Returns a list of all the tasks in the table.
 	 * @return  ArrayList of Tasks in the table.
@@ -78,8 +91,11 @@ public class SqlStorage {
 	
 	/**
 	 * Deletes all the rows in the table.
+	 *
+	 * @return  An int value for the number of rows deleted.
 	 */
-	public void clearTable() {
-		db.delete(TaskTableEntry.TABLE_NAME, null, null);
+	public int clearTable() {
+		int result = db.delete(TaskTableEntry.TABLE_NAME, "1", null);
+		return result;
 	}
 }
