@@ -23,6 +23,7 @@ public class TaskStorageTest {
 	
 	public TaskStorageTest() {
 		activity = Robolectric.buildActivity(TaskActivity.class).create().get();
+		storage = new TaskStorage(activity);
 	}
 	
 	@Before
@@ -32,6 +33,18 @@ public class TaskStorageTest {
 	
 	@Test
 	public void test() {
-		TaskStorage storage = new TaskStorage(activity);
+		storage = new TaskStorage(activity);
+	}
+	
+	@Test
+	public void testAddAndRemoveTask() {
+		Task task1 = new Task("beep boop", "");
+		Task task2 = new Task("yello", "barf");
+		task1.setDone();
+		storage.add(task1);
+		storage.add(task2);
+		
+		if (storage.remove(task1)) ShadowLog.v("taskTest", "task1 removed");
+		if (storage.remove(task2)) ShadowLog.v("taskTest", "task2 removed");
 	}
 }

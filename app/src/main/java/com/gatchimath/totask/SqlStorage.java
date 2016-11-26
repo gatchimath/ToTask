@@ -52,7 +52,7 @@ public class SqlStorage {
 			+ "' AND " + TaskTableEntry.COLUMN_NAME_DET + " = '" + task.getDetails()
 			+ "' AND " + TaskTableEntry.COLUMN_NAME_DONE + " = '" + checkedStatus + "'";
 		int result = db.delete(TaskTableEntry.TABLE_NAME, where, null);
-		Log.i(Util.TAG, "Delete task result: " + Integer.toString(result));
+		Log.v(Util.TAG, "Delete task result: " + Integer.toString(result));
 	}
 	
 	/**

@@ -49,7 +49,7 @@ public class TaskStorage {
 	 *
 	 * @param task  The task to pass into storage.
 	 */
-	public void addTask(Task task) {
+	public void add(Task task) {
 		taskList.add(task);
 	}
 	
@@ -77,8 +77,16 @@ public class TaskStorage {
 	 *
 	 * @return  False if task isn't in this store.
 	 */
-	public boolean removeTask(Task task) {
+	public boolean remove(Task task) {
 		boolean success = taskList.remove(task);
+		try {
+			sqlStorage.deleteTask(task);
+		}
+		catch (NullPointerException e) {
+			Log.e(Util.TAG, "Task delete from database failed:");
+			Log.e(Util.TAG, "No task to delete");
+			Log.e(Util.TAG, e.getMessage());
+		}
 		return success;
 	}
 }
