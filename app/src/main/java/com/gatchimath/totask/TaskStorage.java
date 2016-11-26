@@ -1,5 +1,8 @@
 package com.gatchimath.totask;
 
+import android.content.Context;
+import android.util.Log;
+import java.lang.IllegalArgumentException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,9 +28,20 @@ import java.util.List;
 public class TaskStorage {
 	
 	private ArrayList<Task> taskList;
+	private SqlStorage sqlStorage;
 	
-	public TaskStorage() {
+	public TaskStorage(Context context) {
 		taskList = new ArrayList();
+		TaskDbHelper dbHelper = new TaskDbHelper(context);
+		sqlStorage = new SqlStorage(context, dbHelper.getWritableDatabase());
+		try {
+			taskList = sqlStorage.retrieveAllTasks();
+		}
+		catch (IllegalArgumentException e) {
+			Log.e(Util.TAG, "Failure in TaskStorage initialization");
+			Log.e(Util.TAG, "Could not retrieve tasks from database");
+			Log.e(Util.TAG, e.getMessage());
+		}
 	}
 
 	/**
