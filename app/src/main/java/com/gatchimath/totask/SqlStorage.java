@@ -65,7 +65,7 @@ public class SqlStorage {
 			null, null,	null, null,	null, null
 		);
 		
-		// Now exract the info from the cursor
+		// Now extract the info from the cursor
 		cursor.moveToFirst();
 		ArrayList<Task> taskList = new ArrayList<Task>(cursor.getCount());
 		Task task;
