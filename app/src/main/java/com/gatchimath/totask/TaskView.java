@@ -4,6 +4,9 @@ import android.content.Context;
 import android.support.v7.widget.CardView;
 import android.view.LayoutInflater;
 
+/**
+ * View of a single Task as a card.
+ */
 public class TaskView extends CardView {
 	public TaskView(Context context) {
 		super(context);

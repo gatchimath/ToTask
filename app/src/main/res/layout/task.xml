@@ -7,8 +7,7 @@
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="8dp"
-        >
+        android:layout_margin="8dp">
         <TextView
             android:text="@{task.name}"
             android:layout_width="match_parent"
